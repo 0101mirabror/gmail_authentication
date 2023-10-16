@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+    
+    {% block content %}
+
+    {% if user.is_authenticated %}
+    Autenticated
+    <a href="{% url 'login_attempt' %}">Login</a>
+    <a href="{% url 'register_attempt' %}">Register</a>
+    {% else %}
+    Unautenticated
+        <a href="{% url 'login_attempt' %}">Login</a>
+        <a href="{% url 'register_attempt' %}">Register</a>
+    {% endif %}
+    {% comment %} {{user.is_verified}}1
+    {{user.is_authenticated}}2 {% endcomment %}
+{% endblock %}
