@@ -1,10 +1,12 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} 
+{% block content %}
 <div class="container">
   <h3 class="card-title text-center">Register for user account</h3>
   <div class="card-text">
     <form method="POST" action="">
+      {% csrf_token %}
       {% if messages %} {% for message in messages %}
-      <div class="alert-info">{{ message }}</div>
+      <div class="alert-info text-danger h6">{{ message }}</div>
       {% endfor %} {% endif %}
       <div class="form-group">
         <label for="exampleInputEmail1">Username</label>
@@ -16,7 +18,6 @@
           aria-describedby="emailHelp"
         />
       </div>
-
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
         <input
@@ -47,11 +48,7 @@
         />
       </div>
       <a href="#" style="float: right; font-size: 12px">Forgot password?</a>
-
       <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-
-      {% csrf_token %}
-
       <div class="sign-up">
         Already have an account?
         <a href="{% url 'login_attempt' %}">Create One</a>
@@ -59,5 +56,4 @@
     </form>
   </div>
 </div>
-
 {% endblock %}
